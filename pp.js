@@ -40,3 +40,25 @@ function renderContacts(filter = '') {
         contactList.appendChild(row);
       });
   }
+
+
+  function deleteContact(index) {
+    contacts.splice(index, 1);
+    renderContacts();
+  }
+  
+  
+  function editContact(index) {
+    const contact = contacts[index];
+    document.getElementById('nombre').value = contact.nombre;
+    document.getElementById('phone').value = contact.telefono;
+    document.getElementById('email').value = contact.email;
+    document.getElementById('tag').value = contact.etiqueta;
+    deleteContact(index); 
+  }
+  
+  
+  searchInput.addEventListener('input', (e) => {
+    renderContacts(e.target.value);
+  });
+  
